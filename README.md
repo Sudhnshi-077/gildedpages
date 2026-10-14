@@ -1,65 +1,50 @@
 # gildedpages
 
-A warm, personal reading journal. Track the books you read, your reading streaks, favourite quotes, goals, and the stories that stayed with you.
+A reading journal for the books you finish, the pages you turn, and the lines you want to keep.
 
-## Features
+I wanted somewhere calm to track my reading that didn't feel like a spreadsheet, so it has a forest-green library look, a night mode for late reading, and a little more warmth than most trackers.
 
-- **Dashboard** with books finished, pages turned, current streak, and average rating
-- **Library, Shelves, Wishlist** to organise every book you own or want to read
-- **Currently Reading** with page-progress sliders and a reading timer
-- **Book journals** with notes for each book
-- **Quotes** to save lines worth keeping
-- **Goals, Stats, Year in Review** to see the shape of your reading
-- **Evening mode**, a deep forest night theme that remembers your choice
-- **Online cover search** when adding books
-- **Accounts.** Sign in with Google or email and password. Your journal is saved to your account, so it follows you across devices, and you can still export or import it as a JSON file from Settings
+## What you can do
+
+- Add books to your library (covers are looked up online) and sort them onto shelves or a wishlist
+- Track what you're reading with a page slider and a reading timer
+- Keep notes for each book and save quotes you love
+- Set reading goals and watch your streak, pages and ratings on the dashboard
+- Look back on the year in the Year in Review page
+- Switch to Evening mode when the lights are low
+- Sign in with Google or email, so your journal stays with you on any device
+- Export or import your journal as a file from Settings
 
 ## Built with
 
-- React + TypeScript
-- TanStack Start and TanStack Router (file-based routing in `src/routes/`)
-- Tailwind CSS and shadcn/ui components
-- Vite
-- Supabase (login + database)
+React, TypeScript, TanStack Start and Router, Tailwind CSS, shadcn/ui, and Supabase for sign-in and the database.
 
-## Run it on your computer
+## Running it yourself
 
-You need [Node.js](https://nodejs.org) installed.
+You'll need Node.js and a free Supabase project.
 
 ```bash
+git clone https://github.com/Sudhnshi-077/gildedpages.git
+cd gildedpages
 npm install
+```
+
+1. In Supabase, open the SQL Editor and run `supabase/schema.sql` once. It creates the table and makes sure each person can only read their own journal.
+2. Copy `.env.example` to `.env` and fill in your Supabase project URL and publishable key.
+3. Start the app:
+
+```bash
 npm run dev
 ```
 
-Then open the address shown in the terminal (usually http://localhost:3000 or http://localhost:5173).
+Email sign-in works straight away. Google sign-in also needs the Google provider switched on in Supabase.
 
-Other commands:
-
-```bash
-npm run build   # make a production build
-npm run test    # run the tests
-```
-
-## Set up sign-in (Supabase)
-
-1. Create a free project at [supabase.com](https://supabase.com).
-2. In the project, open **SQL Editor**, paste the contents of `supabase/schema.sql`, and click **Run**. This creates the `journals` table and the rules that let each person see only their own journal.
-3. Open **Project Settings -> API** and copy the **Project URL** and the **anon public** key.
-4. Copy `.env.example` to `.env` and paste those two values in. Never commit `.env`, and never use the `service_role` key in this app.
-5. Open **Authentication -> URL Configuration** and set **Site URL** to your site (`http://localhost:8080` while testing, your Vercel URL after deploying). Add both under **Redirect URLs**, plus `/reset-password` on each.
-6. **Google sign-in:** open **Authentication -> Sign In / Providers -> Google**, switch it on, and paste a Client ID and Secret from the Google Cloud Console (APIs & Services -> Credentials -> OAuth client ID, type "Web application"). Add the callback URL that Supabase shows you to Google's "Authorized redirect URIs".
-7. When you deploy on Vercel, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` under **Settings -> Environment Variables**, then redeploy.
-
-## Project structure
+## Where things are
 
 ```
-src/
-  components/   the app UI (gildedpages-app.tsx) and reusable ui/ pieces
-  routes/       one file per page (index.tsx = Dashboard, library.tsx = Library, login.tsx = sign-in, ...)
-  lib/          data and helper code (gildedpages-data.ts loads and saves your journal, auth.tsx handles sign-in)
-  styles.css    colours, fonts, and animations
+src/routes/       one file per page
+src/components/   the app screens and shared pieces
+src/lib/          journal data and sign-in code
+src/styles.css    colours, fonts and animations
+supabase/         the database setup
 ```
-
-## Deploy
-
-Push this repo to GitHub, then import it on [Vercel](https://vercel.com/new) and click Deploy.
