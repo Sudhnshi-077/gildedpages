@@ -95,6 +95,14 @@ function LoginPage() {
           </button>
           {mode === "signin" && <button type="button" onClick={() => void onForgot()}>Forgot password?</button>}
         </div>
+        <p className="pw-auth-about">
+          gildedpages is a personal reading journal where you track books, streaks, quotes and goals.
+          You can sign in with Google or email. We only use your email and name to sign you in and to
+          save your own reading data.
+        </p>
+        <p className="pw-auth-legal">
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </p>
       </div>
     </div>
   );
