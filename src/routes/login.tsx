@@ -65,6 +65,9 @@ function LoginPage() {
           <img src="/logo.png" alt="" width={44} height={44} />
           <div><strong>gildedpages</strong><small>YOUR READING UNIVERSE</small></div>
         </div>
+        <p className="pw-auth-about">
+          A personal reading journal to track books, streaks, quotes and goals. Sign in with Google or email. We only use your email and name to sign you in and save your reading data.
+        </p>
         <h1>{mode === "signin" ? "Welcome back" : "Start your journal"}</h1>
         <p className="pw-auth-sub">{mode === "signin" ? "Sign in to open your reading journal." : "Create an account to keep your books, notes and quotes safe."}</p>
 
@@ -95,11 +98,7 @@ function LoginPage() {
           </button>
           {mode === "signin" && <button type="button" onClick={() => void onForgot()}>Forgot password?</button>}
         </div>
-        <p className="pw-auth-about">
-          gildedpages is a personal reading journal where you track books, streaks, quotes and goals.
-          You can sign in with Google or email. We only use your email and name to sign you in and to
-          save your own reading data.
-        </p>
+        
         <p className="pw-auth-legal">
           <a href="/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
         </p>

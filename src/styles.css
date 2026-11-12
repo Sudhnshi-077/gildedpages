@@ -3933,10 +3933,9 @@ html[data-fontsize="large"] {
 }
 
 .pw-auth-about {
-  margin-top: 20px;
+  margin: 16px 0 4px;
   font-size: 13px;
   line-height: 1.6;
-  text-align: center;
   opacity: 0.75;
 }
 
